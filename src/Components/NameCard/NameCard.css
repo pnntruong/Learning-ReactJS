@@ -1,0 +1,57 @@
+body {
+  background-color: #23252c;
+  display: flex;
+  justify-content: center;
+}
+.container {
+  font-family: Inter;
+  background-color: #1a1b21;
+  width: 317px;
+  height: 90vh;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  color: #fff;
+}
+
+.name {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+  color: #f3bf99;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+}
+.web-link {
+  font-size: 10.24px;
+}
+.email-btn {
+  cursor: pointer;
+  height: 34px;
+  width: 247px;
+  left: 151px;
+  top: 469px;
+  border-radius: 6px;
+  padding: 9px 13px 9px 11px;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  margin-bottom: 32px;
+}
+.article-title{
+  align-self: start;
+  margin: 0;
+}
+
+.footer{
+  margin-top: auto;
+}
