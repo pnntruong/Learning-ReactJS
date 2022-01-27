@@ -1,11 +1,11 @@
 import React from 'react';
 
-import TicTacToe from './Components/TicTacToe';
+import TaskManager from './Components/TaskManager';
 
 function App() {
   return (
     <>
-      <TicTacToe />
+      <TaskManager />
     </>
   );
 }
