@@ -1,26 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Task from "./Task";
 
-const TaskList = () => {
-  const [todos, setTodos] = useState([]);
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos")
-      .then((res) => res.json())
-      .then((todosData) => {
-        setTodos(todosData);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+
+const TaskList = ({taskList, updateTaskList, deleteTask}) => {
+
+
   return (
     <div className="overflow-y-scroll">
-      {todos
-        .filter((todo) => todo.userId === 1)
-        .map((todo) => (
+      {taskList
+        .map((task) => (
           <Task
-            key={todo.id}
-            done={todo.completed}
-            title={todo.title}
-            time="7:00 AM"
+            key={task.id}
+            id={task.id}
+            done={task.done}
+            title={task.title}
+            time={task.time}
+            description={task.description}
+            updateTaskList = {updateTaskList}
+            deleteTask={deleteTask}
           />
         ))}
     </div>
