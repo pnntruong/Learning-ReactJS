@@ -3,11 +3,14 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../firebase.config";
 import {
   collection,
-  getDocs,
   addDoc,
   updateDoc,
   deleteDoc,
   doc,
+  onSnapshot,
+  Timestamp,
+  query,
+  orderBy,
 } from "firebase/firestore";
 
 //Components
@@ -21,12 +24,25 @@ const TaskManager = () => {
 
   const taskCollection = collection(db, "TaskList");
 
-  const getTasks = async () => {
-    const tasks = await getDocs(taskCollection);
-    setIsLoading(false);
-    setTaskList(
-      tasks.docs.map((taskDoc) => ({ ...taskDoc.data(), id: taskDoc.id }))
+  const getTasks = () => {
+    const unsub = onSnapshot(
+      query(taskCollection, orderBy("createAt")),
+      (snapshot) => {
+        setTaskList(
+          snapshot.docs.map((taskDoc) => ({
+            ...taskDoc.data(),
+            id: taskDoc.id,
+          }))
+        );
+      setIsLoading(false);
+      }
     );
+
+    // const tasks = await getDocs(taskCollection);
+    // setIsLoading(false);
+    // setTaskList(
+    //   tasks.docs.map((taskDoc) => ({ ...taskDoc.data(), id: taskDoc.id }))
+    // );
   };
 
   const updateTaskList = async (id, taskUpdate) => {
@@ -36,7 +52,7 @@ const TaskManager = () => {
   };
 
   const addTask = async (task) => {
-    await addDoc(taskCollection, task);
+    await addDoc(taskCollection, { ...task, createAt: Timestamp.now() });
     getTasks();
   };
 
@@ -49,11 +65,12 @@ const TaskManager = () => {
     getTasks();
   }, []);
 
+
   return (
     <div className="flex flex-col p-3 container max-h-screen">
       <Header addTask={addTask} />
       {isLoading ? (
-        <Loading className="self-center"/>
+        <Loading className="self-center" />
       ) : (
         <TaskList
           updateTaskList={updateTaskList}

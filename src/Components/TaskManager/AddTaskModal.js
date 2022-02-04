@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-const AddTaskModel = ({ isShow, setIsShow, addTask }) => {
+const AddTaskModal = ({ isShow, setIsShow, addTask }) => {
   const [task, setTask] = useState({});
   const [showMessage, setShowMessage] = useState(false);
   const titleRef = useRef();
@@ -50,11 +50,24 @@ const AddTaskModel = ({ isShow, setIsShow, addTask }) => {
               }
             />
             <input
-              type="text"
-              className={inputClasses}
-              placeholder="Time"
-              onChange={(e) => setTask({ ...task, time: e.target.value })}
+                type="url"
+                className={inputClasses}
+                placeholder="Icon url"
+                onChange={(e) => setTask({ ...task, icon: e.target.value })}
             />
+            <div className="flex justify-around">
+              <input
+                  type="time"
+                  className={inputClasses}
+                  defaultValue={`${new Date().toTimeString().substring(0,5)}`}
+                  onChange={(e) => setTask({ ...task, time: e.target.value })}
+              />
+              <input
+                type="date"
+                className={inputClasses}
+                onChange={(e) => setTask({ ...task, date: e.target.value })}
+              />
+            </div>
           </div>
           <button
             onClick={handleAddTask}
@@ -67,4 +80,4 @@ const AddTaskModel = ({ isShow, setIsShow, addTask }) => {
   );
 };
 
-export default AddTaskModel;
+export default AddTaskModal;

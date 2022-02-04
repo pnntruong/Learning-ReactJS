@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddTaskModel from "./AddTaskModel";
+import AddTaskModal from "./AddTaskModal";
 
 const Header = ({ addTask }) => {
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
@@ -32,7 +32,7 @@ const Header = ({ addTask }) => {
           <span className="text-2xl">+</span>
         </button>
       </div>
-      {showAddTaskModal && <AddTaskModel addTask={addTask} isShow={showAddTaskModal} setIsShow={setShowAddTaskModal} />}
+      {showAddTaskModal && <AddTaskModal addTask={addTask} isShow={showAddTaskModal} setIsShow={setShowAddTaskModal} />}
     </div>
   );
 };
