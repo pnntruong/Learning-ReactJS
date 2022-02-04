@@ -1,11 +1,11 @@
 import React from "react";
-import TaskManager from "./Components/TaskManager"
+import ChatApp from "./Components/ChatApp"
 
 function App() {
 
   return (
     <div className="flex justify-center items-center">
-      <TaskManager />
+      <ChatApp />
     </div>
   );
 }
