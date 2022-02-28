@@ -26,7 +26,6 @@ const ChatApp = () => {
     );
   }
   if (user) {
-    console.log(user)
     if (user.isAnonymous) {
       updateProfile(auth.currentUser, {
         photoURL:

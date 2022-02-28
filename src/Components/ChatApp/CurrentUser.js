@@ -8,6 +8,11 @@ const CurrentUser = () => {
   const user = auth.currentUser;
   const buttonClasses = "hover:opacity-80";
 
+  const logout = () => {
+    if (auth.currentUser.isAnonymous) auth.currentUser.delete();
+    auth.signOut();
+  }
+
   return (
     <div className="relative flex justify-end">
       <div className="flex items-center gap-3">
@@ -25,7 +30,7 @@ const CurrentUser = () => {
             src="https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/64/000000/external-setting-organization-xnimrodx-lineal-gradient-xnimrodx.png"
           />
         </button>
-        <button className={buttonClasses} onClick={() => auth.signOut()}>
+        <button className={buttonClasses} onClick={logout}>
         <img 
           alt="logout"
           width={25}
