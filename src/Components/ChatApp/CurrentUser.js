@@ -9,10 +9,10 @@ const CurrentUser = () => {
   const buttonClasses = "hover:opacity-80";
 
   return (
-    <div className="relative flex justify-end border-b-2 w-full border-blue-300 pb-2 mb-1">
+    <div className="relative flex justify-end">
       <div className="flex items-center gap-3">
         <p className="text-lg">{user.displayName || user.email}</p>
-        <img className="rounded-full" alt={user.displayName} width={50} src={user.photoURL} />
+        <img className="rounded-full w-12 h-12" alt={user.displayName || user.email} src={user.photoURL} />
         <button
           className={buttonClasses}
           onClick={() => {

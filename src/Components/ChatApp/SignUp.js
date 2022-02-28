@@ -12,18 +12,11 @@ const SignIn = () => {
     error,
   ] = useCreateUserWithEmailAndPassword(auth);
 
-  if (error) {
-    return (
-      <div className='w-3/4 xl:w-1/4 md:w-2/4 self-center'>
-        <AuthForm type="signUp" authMethod={createUserWithEmailAndPassword}/>
-        <p className='text-red-400'>Error: {error.message}</p>
-      </div>
-    );
-  }
   if (loading) {
     return (
-      <div className="self-center">
+      <div className="self-center flex flex-col items-center">
         <Loading color="blue" />
+        <p>Creating account...</p>
       </div>
     );
   }
@@ -37,6 +30,9 @@ const SignIn = () => {
   return (
     <div className='w-3/4 xl:w-1/4 md:w-2/4 self-center'>
       <AuthForm type="signUp" authMethod={createUserWithEmailAndPassword}/>
+      {
+        (error && <p className="text-red-400">Error: {error.message}</p>)
+      }
     </div>
 
   );
